@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Image Slider</title>
+        <style>
+            /* Slider container */
+            .slider-container {
+                width: 100%;
+                margin: 0 auto;
+                overflow: hidden;
+                position: relative;
+            }
+
+            /* Slider images */
+            .slider-images {
+                display: flex;
+                transition: transform 0.5s ease;
+                overflow: hidden;
+            }
+
+            /* Individual image */
+            .slider-image {
+                flex: 0 0 100%;
+                /* Display one image at a time on small screens */
+                max-width: 100%;
+                height: auto;
+            }
+
+            /* Navigation buttons */
+            .slider-nav {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            /* Button styles */
+            .slider-button {
+                background-color: #333;
+                color: #fff;
+                border: none;
+                padding: 10px 15px;
+                cursor: pointer;
+            }
+
+            @media (min-width: 768px) {
+                .slider-image {
+                    flex: 0 0 33.33%;
+                    /* Display three images at a time on medium screens */
+                }
+            }
+
+            @media (min-width: 992px) {
+                .slider-image {
+                    flex: 0 0 25%;
+                    /* Display four images at a time on large screens */
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="slider-container">
+            <div class="slider-images">
+                <div class="slider-image"><img src="1.jpg" height="250px" width="250px" alt="Image 1"></div>
+                <div class="slider-image"><img src="2.jpg" height="250px" width="250px" alt="Image 2"></div>
+                <!-- <div class="slider-image"><img src="3.jpg" height="250px" width="250px" alt="Image 3"></div>
+                <div class="slider-image"><img src="4.jpg" height="250px" width="250px" alt="Image 4"></div>
+                <div class="slider-image"><img src="7.jpg" height="250px" width="250px" alt="Image 5"></div>
+                <div class="slider-image"><img src="6.jpg" height="250px" width="250px" alt="Image 6"></div> -->
+            </div>
+            <div class="slider-nav">
+                <button class="slider-button" onclick="moveSlider(-1)">Previous</button>
+                <button class="slider-button" onclick="moveSlider(1)">Next</button>
+            </div>
+        </div>
+        <script>
+            let currentIndex = 0;
+            const slides = document.querySelectorAll('.slider-image');
+
+            function moveSlider(direction) {
+                currentIndex += direction;
+                if (currentIndex < 0) {
+                    currentIndex = slides.length - Math.ceil(window.innerWidth / slides[0].clientWidth); // Display calculated number of images based on screen size
+                }
+                if (currentIndex > slides.length - Math.ceil(window.innerWidth / slides[0].clientWidth)) {
+                    currentIndex = 0;
+                }
+                const offset = -currentIndex * (100 / Math.ceil(window.innerWidth / slides[0].clientWidth));
+                document.querySelector('.slider-images').style.transform = `translateX(${offset}%)`;
+            }
+
+            setInterval(() => {
+                moveSlider(1);
+            }, 2000); // Slide every 2 seconds
+        </script>
+    </body>
+
+    </hg

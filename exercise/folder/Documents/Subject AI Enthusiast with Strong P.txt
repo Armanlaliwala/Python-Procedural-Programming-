@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>index</title>
+</head>
+<body style="background-color:powderblue;">
+
+<a href="index.html">Home</a>
+<a href="aboutus.html">aboutus</a>
+<a href="products.html">products</a>
+<a href="contact.html">contact</a>
+
+<img src="100.jpg">
+<h1>anvez khan</h1>
+
+<p> me juhapure rehta hu or me intanship kr ne delhi darvaza jata hu</p>
+
+</body>
+</html>

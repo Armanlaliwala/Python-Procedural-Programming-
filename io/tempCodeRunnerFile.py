@@ -1,0 +1,3 @@
+
+# print(text)
+# f.close()
